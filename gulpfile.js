@@ -8,6 +8,7 @@ const htmlmin = require('gulp-htmlmin');
 const rimraf = require('gulp-rimraf');
 const ignore = require('gulp-ignore');
 const postcss = require('gulp-postcss');
+const sass = require('gulp-sass')(require('sass'));
 const sharpResponsive = require('gulp-sharp-responsive');
 const browserSync = require('browser-sync').create();
 const { gulpEsbuild } = require('gulp-esbuild');
@@ -33,6 +34,7 @@ const buildHtml = () =>
 
 const buildStyles = () =>
   src(PATHS.sources.styles.src)
+    .pipe(sass().on('error', sass.logError))
     .pipe(postcss())
     .pipe(gulpif(isProduction, cssNano()))
     .pipe(dest(PATHS.sources.styles.dest));

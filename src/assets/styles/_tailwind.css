@@ -33,14 +33,3 @@
 
   --transition-property-font-size: font-size;
 }
-
-@import './1st-things-1st/_font-faces.css';
-@import './1st-things-1st/_reset.css';
-
-@import './modules/_animations.css';
-@import './modules/_layout.css';
-@import './modules/_type.css';
-
-@import './blocks/_footer.css';
-@import './blocks/_header.css';
-@import './blocks/_nav.css';

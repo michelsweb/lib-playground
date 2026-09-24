@@ -24,7 +24,7 @@ exports.PATHS = {
       doc: './src/assets/scripts/**/*.{js,ts}',
     },
     styles: {
-      src: './src/assets/styles/main.css',
+      src: './src/assets/styles/main.{scss,sass}',
       dest: './dist/assets/styles/',
       watch: './src/assets/styles/**/*.*',
     },
@@ -52,7 +52,17 @@ exports.PATHS = {
     },
   },
   preloads: {
-    fonts: ['/assets/fonts/noto-sans-mono-v21-latin-700.woff2', '/assets/fonts/noto-sans-mono-v21-latin-regular.woff2', '/assets/fonts/noto-sans-v27-latin-700.woff2', '/assets/fonts/noto-sans-v27-latin-700italic.woff2', '/assets/fonts/noto-sans-v27-latin-italic.woff2', '/assets/fonts/noto-sans-v27-latin-regular.woff2', '/assets/fonts/noto-serif-v21-latin-700.woff2', '/assets/fonts/noto-serif-v21-latin-700italic.woff2', '/assets/fonts/noto-serif-v21-latin-italic.woff2'],
+    fonts: [
+      '/assets/fonts/noto-sans-mono-v21-latin-700.woff2',
+      '/assets/fonts/noto-sans-mono-v21-latin-regular.woff2',
+      '/assets/fonts/noto-sans-v27-latin-700.woff2',
+      '/assets/fonts/noto-sans-v27-latin-700italic.woff2',
+      '/assets/fonts/noto-sans-v27-latin-italic.woff2',
+      '/assets/fonts/noto-sans-v27-latin-regular.woff2',
+      '/assets/fonts/noto-serif-v21-latin-700.woff2',
+      '/assets/fonts/noto-serif-v21-latin-700italic.woff2',
+      '/assets/fonts/noto-serif-v21-latin-italic.woff2',
+    ],
     scripts: ['/assets/scripts/main.js'],
     styles: ['/assets/styles/main.css'],
   },
