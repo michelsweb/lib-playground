@@ -5,5 +5,5 @@ module.exports = {
   proseWrap: 'preserve',
   bracketSpacing: true,
   arrowParens: 'avoid',
-  printWidth: 1000000,
+  printWidth: 100,
 };

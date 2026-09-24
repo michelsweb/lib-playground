@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { src, dest, series, parallel, watch } = require('gulp');
 const nunjucksRender = require('gulp-nunjucks-render');
 const gulpif = require('gulp-if');
@@ -30,12 +31,17 @@ const buildHtml = () =>
     .pipe(gulpif(isProduction, htmlmin({ collapseWhitespace: true }), prettier()))
     .pipe(dest(PATHS.build.dest));
 
-const buildStyles = () => src(PATHS.sources.styles.src).pipe(postcss()).pipe(gulpif(isProduction, cssNano())).pipe(dest(PATHS.sources.styles.dest));
+const buildStyles = () =>
+  src(PATHS.sources.styles.src)
+    .pipe(postcss())
+    .pipe(gulpif(isProduction, cssNano()))
+    .pipe(dest(PATHS.sources.styles.dest));
 
 const buildScripts = () =>
   src(PATHS.sources.scripts.src)
     .pipe(
       gulpEsbuild({
+        entryPoints: [PATHS.sources.scripts.src],
         outfile: 'main.js',
         bundle: true,
         loader: {
@@ -62,13 +68,17 @@ const images = () =>
     )
     .pipe(dest(PATHS.sources.images.dest));
 
-const copyImages = () => src(PATHS.sources.images.src, { encoding: false }).pipe(dest(PATHS.sources.images.dest));
+const copyImages = () =>
+  src(PATHS.sources.images.src, { encoding: false }).pipe(dest(PATHS.sources.images.dest));
 
-const copyFonts = () => src(PATHS.sources.fonts.src, { encoding: false }).pipe(dest(PATHS.sources.fonts.dest));
+const copyFonts = () =>
+  src(PATHS.sources.fonts.src, { encoding: false }).pipe(dest(PATHS.sources.fonts.dest));
 
-const copyIcons = () => src(PATHS.sources.icons.src, { encoding: false }).pipe(dest(PATHS.sources.icons.dest));
+const copyIcons = () =>
+  src(PATHS.sources.icons.src, { encoding: false }).pipe(dest(PATHS.sources.icons.dest));
 
-const copyRoot = () => src(PATHS.sources.root.src, { encoding: false }).pipe(dest(PATHS.sources.root.dest));
+const copyRoot = () =>
+  src(PATHS.sources.root.src, { encoding: false }).pipe(dest(PATHS.sources.root.dest));
 
 const copyStaticAssets = parallel(copyImages, copyFonts, copyIcons, copyRoot);
 
@@ -94,10 +104,22 @@ const serve = cb => {
   );
 };
 
-const clean = () => src('./dist/**/*.*', { read: false }).pipe(ignore('node_modules/**')).pipe(rimraf());
+const clean = () => {
+  fs.mkdirSync('./dist', { recursive: true });
+  return src('./dist/**/*.*', { read: false }).pipe(ignore('node_modules/**')).pipe(rimraf());
+};
 
-const devTasks = series(clean, images, parallel(buildHtml, buildStyles, buildScripts, copyStaticAssets), parallel(serve, watchFiles));
-const prodTasks = series(clean, images, parallel(buildHtml, buildStyles, buildScripts, copyStaticAssets));
+const devTasks = series(
+  clean,
+  images,
+  parallel(buildHtml, buildStyles, buildScripts, copyStaticAssets),
+  parallel(serve, watchFiles)
+);
+const prodTasks = series(
+  clean,
+  images,
+  parallel(buildHtml, buildStyles, buildScripts, copyStaticAssets)
+);
 
 exports.default = isProduction ? prodTasks : devTasks;
 exports.clean = clean;
