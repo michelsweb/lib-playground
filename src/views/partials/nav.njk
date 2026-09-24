@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+    {% for item in nav %}
+      <li><a href="{{ item.url }}"{% if activePage == item.id %} class="nav__link--active" aria-current="page"{% endif %}>{{ item.label }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>

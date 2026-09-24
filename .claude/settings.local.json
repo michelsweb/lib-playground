@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(node *)",
+      "Bash(rm /Users/mmi/Workspaces/Michel/static-gulp-template/src/assets/styles/core/_placeholders.css)",
+      "Bash(rm /Users/mmi/Workspaces/Michel/static-gulp-template/tailwind.config.js)",
+      "Bash(rm /Users/mmi/Workspaces/Michel/static-gulp-template/.browserlistrc)",
+      "Bash(rm /Users/mmi/Workspaces/Michel/static-gulp-template/.eslintrc)",
+      "Bash(rm /Users/mmi/Workspaces/Michel/static-gulp-template/.eslintignore)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(npm list *)",
+      "Bash(git push *)",
+      "Bash(npx gulp *)"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+
+{% for font in preloads.fonts %}<link rel="preload" href="{{ font }}" as="font" type="font/woff2">{% endfor %}
+{% for script in preloads.scripts %}<link rel="preload" href="{{ script }}" as="script">{% endfor %}
+{% for style in preloads.styles %}<link rel="preload" href="{{ style }}" as="style">{% endfor %}

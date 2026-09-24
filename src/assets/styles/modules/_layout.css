@@ -1,0 +1,22 @@
+@utility inner-container {
+  @apply container mx-auto px-4 md:px-6 lg:px-8;
+}
+
+/* empty */
+.header__inner,
+.footer__inner {
+  @apply inner-container;
+}
+
+body > section {
+  @apply grid gap-4 md:gap-6 lg:gap-8 md:grid-cols-3 lg:grid-cols-4;
+  @apply inner-container;
+}
+
+body > section > main {
+  @apply md:col-span-2 lg:col-span-3;
+}
+
+body > section > aside {
+  @apply md:col-span-1 lg:col-span-1;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <meta charset="UTF-8">
+  <title>A quick app</title>
+
+  {% include "partials/og.njk" %}
+
+  {% include "partials/icons.njk" %}
+
+  {% include "partials/preloads.njk" %}
+
+  <link rel="stylesheet" href="/assets/styles/main.css">
+</head>
+<body>
+
+{% include "partials/header.njk" %}
+
+<section>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <aside>
+    {% block aside %}{% endblock %}
+    {% include "partials/nav.njk" %}
+  </aside>
+</section>
+
+{% include "partials/footer.njk" %}
+
+<script src="/assets/scripts/main.js" defer></script>
+
+</body>
+</html>
