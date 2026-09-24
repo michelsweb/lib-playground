@@ -29,7 +29,13 @@ const buildHtml = () =>
         },
       })
     )
-    .pipe(gulpif(isProduction, htmlmin({ collapseWhitespace: true }), prettier()))
+    .pipe(
+      gulpif(
+        isProduction,
+        htmlmin({ collapseWhitespace: true }),
+        prettier({ parser: 'html', printWidth: 1000 })
+      )
+    )
     .pipe(dest(PATHS.build.dest));
 
 const buildStyles = () =>
